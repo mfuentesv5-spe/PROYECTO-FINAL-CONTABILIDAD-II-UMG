@@ -623,3 +623,50 @@ input {
     }
   }
 }
+
+.tarjeta,
+.evidencia {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+@media (hover: hover) {
+  .seccion .tarjeta:hover {
+    background-color: #ffffff;
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(18, 52, 83, 0.20);
+  }
+
+  .seccion .tarjeta:hover h3 {
+    color: #123453;
+  }
+
+  .seccion .tarjeta:hover .simbolo {
+    background-color: #eaf1f8;
+    color: #214f7b;
+    transform: none;
+  }
+
+  .evidencia:hover {
+    background-color: #fbfcff;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(18, 52, 83, 0.15);
+  }
+
+  .espacio-foto:hover {
+    background-color: #eaf1f8;
+    border-color: #b7c9da;
+  }
+
+  .tabla-academica tbody tr:hover {
+    background-color: inherit;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seccion .tarjeta:hover,
+  .evidencia:hover {
+    transform: none;
+  }
+}
