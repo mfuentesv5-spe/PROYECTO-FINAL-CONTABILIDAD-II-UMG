@@ -587,3 +587,114 @@ input {
     transition: none;
   }
 }
+
+.tarjeta,
+.evidencia,
+.espacio-foto,
+.simbolo,
+.tabla-academica tbody tr {
+  transition:
+    transform 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    color 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tarjeta:hover {
+    transform: translateY(-8px);
+    background-color: #eaf1f8;
+    border-color: #d2aa43;
+    box-shadow: 0 18px 38px rgba(18, 52, 83, 0.18);
+  }
+
+  .tarjeta:hover h3 {
+    color: #214f7b;
+  }
+
+  .tarjeta:hover .simbolo {
+    background-color: #214f7b;
+    color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  .evidencia:hover {
+    transform: translateY(-5px);
+    background-color: #eaf1f8;
+    border-color: #d2aa43;
+    box-shadow: 0 12px 28px rgba(18, 52, 83, 0.13);
+  }
+
+  .espacio-foto:hover {
+    background-color: #dbe9f6;
+    border-color: #d2aa43;
+  }
+
+  .tabla-academica tbody tr:hover {
+    background-color: #dbe9f6;
+  }
+
+  .calculadora:hover {
+    background-color: #eaf1f8;
+  }
+
+  .calculadora input:hover {
+    border-color: #214f7b;
+  }
+
+  .calculadora input:focus {
+    background-color: #ffffff;
+    border-color: #d2aa43;
+    outline: 2px solid #d2aa43;
+  }
+
+  .calculadora button:hover {
+    background-color: #d2aa43;
+    color: #123453;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(18, 52, 83, 0.18);
+  }
+
+  .barra-lateral a:hover {
+    background-color: #214f7b;
+    border-left: 4px solid #d2aa43;
+    padding-left: 20px;
+  }
+
+  .boton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(18, 52, 83, 0.2);
+  }
+}
+
+.tarjeta h3,
+.simbolo,
+.calculadora input,
+.calculadora button,
+.barra-lateral a,
+.boton {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    padding 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta,
+  .evidencia,
+  .espacio-foto,
+  .simbolo,
+  .tabla-academica tbody tr,
+  .tarjeta h3,
+  .calculadora input,
+  .calculadora button,
+  .barra-lateral a,
+  .boton {
+    transition: none;
+    transform: none;
+  }
+}
