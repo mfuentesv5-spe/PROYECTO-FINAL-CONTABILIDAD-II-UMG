@@ -690,3 +690,14 @@ input {
   height: 65px;
   object-fit: contain;
 }
+
+.encabezado .logo-universidad {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  flex-shrink: 0;
+  background-color: transparent;
+}
