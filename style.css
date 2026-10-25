@@ -1,3 +1,4 @@
+
 :root {
   --azul: #214f7b;
   --azul-oscuro: #123453;
@@ -12,137 +13,53 @@
   --sombra: 0 8px 24px rgba(18, 52, 83, 0.08);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+}
+
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
   background: var(--fondo);
   color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.7;
 }
-button, input { font: inherit; }
-:focus-visible { outline: 3px solid var(--dorado); outline-offset: 3px; }
+
+a {
+  color: var(--azul);
+}
+
+button,
+input {
+  font: inherit;
+}
 
 .encabezado {
-  min-height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  min-height: 95px;
+  padding: 12px 28px;
   background: var(--blanco);
   border-bottom: 3px solid var(--dorado);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 30px; position: sticky; top: 0; z-index: 1000;
-  box-shadow: 0 3px 14px rgba(18, 52, 83, 0.05);
-}
-.marca { display: flex; align-items: center; gap: 15px; }
-.logo {
-  background: var(--azul); color: white; font-size: 22px; font-weight: 800;
-  width: 48px; height: 48px; border-radius: 12px; display: flex;
-  align-items: center; justify-content: center; border-bottom: 4px solid var(--dorado);
-}
-.marca h1 { font-size: 21px; color: var(--azul-oscuro); line-height: 1.3; }
-.marca p { font-size: 12px; color: var(--gris); }
-.estructura { display: flex; min-height: calc(100vh - 80px); }
-.barra-lateral {
-  width: 255px; flex-shrink: 0; background: var(--azul-oscuro); padding: 30px 16px;
-  position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto;
-}
-.barra-lateral h3 {
-  font-size: 12px; color: #f1d98f; margin: 0 12px 22px; letter-spacing: 1px;
-}
-.barra-lateral a {
-  display: block; padding: 13px 16px; margin-bottom: 8px; color: #e5edf5;
-  text-decoration: none; border-radius: 9px; border-left: 3px solid transparent;
-  transition: background .2s ease, color .2s ease, border-color .2s ease; font-size: 14px;
-}
-.barra-lateral a:hover, .barra-lateral a.activo {
-  background: var(--azul); color: white; border-left-color: var(--dorado);
-}
-.contenido { flex: 1; min-width: 0; padding: 30px; max-width: 1500px; margin: 0 auto; }
-.hero {
-  background: linear-gradient(125deg, var(--azul-oscuro), var(--azul)); color: white;
-  padding: 65px 45px; border-radius: 18px; margin-bottom: 40px;
-  border-bottom: 5px solid var(--dorado); box-shadow: var(--sombra);
-}
-.etiqueta {
-  display: inline-block; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.25);
-  padding: 7px 15px; border-radius: 30px; font-size: 12px; font-weight: bold;
-  letter-spacing: 1px; margin-bottom: 20px;
-}
-.hero h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.2; margin-bottom: 20px; }
-.hero p { max-width: 650px; margin-bottom: 30px; color: #eef4fb; }
-.boton {
-  display: inline-block; background: white; color: var(--azul-oscuro); text-decoration: none;
-  font-weight: bold; padding: 12px 25px; border-radius: 8px; border: 2px solid white;
-  transition: .2s ease;
-}
-.boton:hover { background: var(--dorado-claro); border-color: var(--dorado); transform: translateY(-1px); }
-.seccion { margin-bottom: 55px; }
-.seccion h2 { font-size: 27px; color: var(--azul-oscuro); margin-bottom: 8px; line-height: 1.3; }
-.linea { width: 65px; height: 4px; background: var(--dorado); border-radius: 10px; margin-bottom: 25px; }
-.seccion > p { margin-bottom: 22px; }
-.cuadricula { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.tarjeta {
-  background: var(--blanco); padding: 26px; border-radius: 14px; border: 1px solid var(--borde);
-  border-top: 3px solid var(--dorado); box-shadow: var(--sombra); transition: transform .25s, box-shadow .25s;
-}
-.tarjeta:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(18, 52, 83, .12); }
-.tarjeta h3 { color: var(--azul-oscuro); font-size: 19px; margin-bottom: 13px; line-height: 1.4; }
-.tarjeta h3:not(:first-child) { margin-top: 22px; }
-.tarjeta p { color: #475569; margin-bottom: 12px; }
-.tarjeta ul { padding-left: 22px; margin-top: 12px; }
-.tarjeta li { margin-bottom: 9px; }
-.tarjeta a { color: var(--azul); overflow-wrap: anywhere; }
-.tarjeta a:hover { color: #8a6816; }
-.simbolo {
-  display: inline-block; background: var(--dorado-claro); color: var(--azul-oscuro);
-  padding: 10px 15px; border-radius: 9px; font-weight: 800; margin-bottom: 18px;
-  border: 1px solid #ead8a4;
-}
-.calculadora { display: flex; flex-direction: column; }
-.calculadora label { font-weight: 600; font-size: 13px; margin: 12px 0 6px; }
-.calculadora input {
-  width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;
-  font-size: 15px; background: #fff; color: var(--texto);
-}
-.calculadora input:focus { outline: 2px solid var(--dorado); border-color: var(--azul); }
-.calculadora button {
-  background: var(--azul); color: white; padding: 13px; border: none; border-radius: 8px;
-  cursor: pointer; margin-top: 20px; font-size: 15px; font-weight: bold; transition: background .2s ease;
-}
-.calculadora button:hover { background: var(--azul-oscuro); }
-.resultado { margin-top: 18px; padding: 15px; border-radius: 9px; background: var(--azul-claro); color: var(--azul-oscuro); font-weight: 600; display: none; overflow-wrap: anywhere; border-left: 4px solid var(--dorado); }
-.resultado.error { background: #fef2f2; color: #b91c1c; border-left-color: #dc2626; }
-.espacio-foto {
-  min-height: 160px; border: 2px dashed var(--dorado); border-radius: 12px; background: var(--dorado-claro);
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  color: var(--azul-oscuro); margin-top: 20px; padding: 20px;
-}
-.pie { text-align: center; border-top: 1px solid var(--borde); padding: 30px 15px; color: var(--gris); font-size: 13px; }
-.menu-btn { display: none; background: var(--azul); color: white; border: 0; border-radius: 8px; padding: 8px 13px; font-size: 22px; cursor: pointer; }
-
-@media (max-width: 1100px) { .cuadricula { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 800px) {
-  .encabezado { padding: 10px 18px; }
-  .menu-btn { display: block; }
-  .barra-lateral { display: none; position: fixed; top: 80px; left: 0; width: min(280px, 85vw); height: calc(100vh - 80px); z-index: 999; box-shadow: 8px 8px 20px rgba(0,0,0,.18); }
-  .barra-lateral.abierto { display: block; }
-  .contenido { padding: 20px; }
-  .hero { padding: 45px 25px; }
-}
-@media (max-width: 600px) {
-  .marca h1 { font-size: 17px; }
-  .marca p { font-size: 10px; }
-  .logo { width: 40px; height: 40px; font-size: 18px; }
-  .cuadricula { grid-template-columns: 1fr; }
-  .seccion h2 { font-size: 23px; }
-  .tarjeta { padding: 20px; }
-  .hero { padding: 34px 22px; }
-  .contenido { padding: 16px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  box-shadow: var(--sombra);
 }
 
-/* LOGOTIPO UNIVERSIDAD MARIANO GALVEZ */
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
 
 .logo-universidad {
   width: 65px;
@@ -151,62 +68,462 @@ button, input { font: inherit; }
   flex-shrink: 0;
 }
 
-/* Nombre de la universidad */
 .marca h1 {
+  margin: 0;
   font-size: 20px;
-  color: #123453;
-  font-weight: 700;
+  color: var(--azul-oscuro);
   line-height: 1.3;
 }
 
-/* Nombre de la carrera */
 .marca p {
+  margin: 4px 0 0;
   font-size: 13px;
-  color: #64748b;
+  color: var(--gris);
 }
 
-/* Encabezado institucional */
-.encabezado {
-  min-height: 95px;
-  height: auto;
-  padding: 12px 25px;
+.menu-btn {
+  display: none;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 14px;
+  background: var(--azul);
+  color: var(--blanco);
+  font-size: 24px;
+  cursor: pointer;
 }
 
-/* Ajustes del menú lateral */
+.estructura {
+  display: flex;
+  align-items: flex-start;
+}
+
 .barra-lateral {
+  position: sticky;
   top: 95px;
+  width: 255px;
   height: calc(100vh - 95px);
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: 26px 16px;
+  background: var(--azul-oscuro);
+  color: var(--blanco);
 }
 
-/* Adaptación para celulares */
+.barra-lateral h3 {
+  margin: 0 12px 22px;
+  color: var(--dorado);
+  font-size: 13px;
+  letter-spacing: 1.2px;
+}
+
+.barra-lateral a {
+  display: block;
+  margin-bottom: 7px;
+  padding: 12px 14px;
+  border-radius: 9px;
+  color: #f0f5fa;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.barra-lateral a:hover,
+.barra-lateral a.activo {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+.contenido {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  padding: 28px;
+}
+
+.hero {
+  padding: 60px 42px;
+  border-radius: 18px;
+  background: linear-gradient(125deg, var(--azul-oscuro), var(--azul));
+  color: var(--blanco);
+  box-shadow: var(--sombra);
+  border-bottom: 5px solid var(--dorado);
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 6px 13px;
+  border-radius: 20px;
+  background: var(--dorado-claro);
+  color: var(--azul-oscuro);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.hero h2 {
+  margin: 20px 0 12px;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.2;
+  color: var(--blanco);
+}
+
+.hero p {
+  max-width: 680px;
+  font-size: 17px;
+  color: #edf4fb;
+}
+
+.boton {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 22px;
+  border-radius: 9px;
+  background: var(--dorado);
+  color: var(--azul-oscuro);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.boton:hover {
+  background: #e1be63;
+}
+
+.seccion {
+  padding-top: 42px;
+  padding-bottom: 12px;
+}
+
+.seccion > h2 {
+  margin: 0;
+  color: var(--azul-oscuro);
+  font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.3;
+}
+
+.linea {
+  width: 85px;
+  height: 4px;
+  margin: 12px 0 24px;
+  border-radius: 10px;
+  background: var(--dorado);
+}
+
+.seccion > p {
+  max-width: 920px;
+  margin-bottom: 24px;
+}
+
+.cuadricula {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.tarjeta {
+  min-width: 0;
+  padding: 25px;
+  border: 1px solid var(--borde);
+  border-top: 3px solid var(--dorado);
+  border-radius: 13px;
+  background: var(--blanco);
+  box-shadow: var(--sombra);
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+  color: var(--azul-oscuro);
+  font-size: 19px;
+}
+
+.tarjeta h3:not(:first-child) {
+  margin-top: 22px;
+}
+
+.tarjeta p {
+  margin-bottom: 13px;
+}
+
+.tarjeta ul {
+  padding-left: 22px;
+}
+
+.tarjeta li {
+  margin-bottom: 8px;
+}
+
+.simbolo {
+  display: inline-flex;
+  min-width: 54px;
+  min-height: 45px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--azul-claro);
+  color: var(--azul);
+  font-weight: bold;
+}
+
+.bloque-ampliado {
+  margin-top: 24px;
+}
+
+.tabla-responsive {
+  overflow-x: auto;
+}
+
+.tabla-academica {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabla-academica th,
+.tabla-academica td {
+  padding: 13px;
+  border: 1px solid var(--borde);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabla-academica thead {
+  background: var(--azul-oscuro);
+  color: var(--blanco);
+}
+
+.tabla-academica tbody tr:nth-child(even) {
+  background: var(--azul-claro);
+}
+
+.calculadora {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.calculadora label {
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--azul-oscuro);
+}
+
+.calculadora input {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #bac9d8;
+  border-radius: 8px;
+  background: var(--blanco);
+  color: var(--texto);
+}
+
+.calculadora input:focus {
+  outline: 2px solid var(--dorado);
+  outline-offset: 1px;
+}
+
+.calculadora button {
+  margin-top: 18px;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--azul);
+  color: var(--blanco);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.calculadora button:hover {
+  background: var(--azul-oscuro);
+}
+
+.formula {
+  padding: 12px;
+  border-left: 4px solid var(--dorado);
+  border-radius: 5px;
+  background: var(--dorado-claro);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.ejemplo {
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--azul-claro);
+  font-size: 14px;
+}
+
+.nota-campo {
+  font-size: 13px;
+  color: var(--gris);
+}
+
+.resultado {
+  margin-top: 15px;
+  padding: 13px;
+  border-radius: 8px;
+  background: var(--azul-claro);
+  color: var(--azul-oscuro);
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.resultado:empty {
+  display: none;
+}
+
+.resultado.error {
+  background: #fff1f0;
+  color: #9c2525;
+}
+
+.evidencia-grid {
+  margin-top: 20px;
+}
+
+.evidencia {
+  padding: 17px;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  background: #fbfcff;
+}
+
+.evidencia h3 {
+  font-size: 17px;
+}
+
+.espacio-foto {
+  display: flex;
+  min-height: 180px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 2px dashed #b7c9da;
+  border-radius: 12px;
+  background: var(--azul-claro);
+  color: var(--azul);
+  text-align: center;
+}
+
+.foto-evidencia {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.pie {
+  margin-top: 45px;
+  padding: 25px;
+  border-top: 3px solid var(--dorado);
+  border-radius: 12px;
+  background: var(--azul-oscuro);
+  color: var(--blanco);
+  text-align: center;
+  font-size: 13px;
+}
+
+.pie p {
+  margin: 5px 0;
+}
+
+@media (max-width: 1100px) {
+  .contenido {
+    padding: 22px;
+  }
+}
+
 @media (max-width: 800px) {
+  .encabezado {
+    min-height: 95px;
+  }
+
+  .menu-btn {
+    display: block;
+    flex-shrink: 0;
+  }
+
   .barra-lateral {
+    position: fixed;
     top: 95px;
+    left: 0;
+    z-index: 90;
+    width: min(280px, 85vw);
     height: calc(100vh - 95px);
+    transform: translateX(-105%);
+    transition: transform 0.25s ease;
+    box-shadow: 5px 0 18px rgba(0, 0, 0, 0.15);
+  }
+
+  .barra-lateral.abierto {
+    transform: translateX(0);
+  }
+
+  .contenido {
+    width: 100%;
   }
 }
 
 @media (max-width: 600px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+
+  .encabezado {
+    min-height: 80px;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
   .logo-universidad {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .marca {
+    gap: 9px;
   }
 
   .marca h1 {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .marca p {
     font-size: 11px;
   }
 
-  .encabezado {
-    padding: 10px 12px;
+  .barra-lateral {
+    top: 80px;
+    height: calc(100vh - 80px);
   }
 
-  .marca {
-    gap: 10px;
-    min-width: 0;
+  .contenido {
+    padding: 14px;
+  }
+
+  .hero {
+    padding: 36px 22px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .cuadricula {
+    grid-template-columns: 1fr;
+  }
+
+  .tarjeta {
+    padding: 19px;
+  }
+
+  .seccion {
+    padding-top: 30px;
   }
 }
-
