@@ -1,57 +1,33 @@
 
-// PROYECTO AULA FINANCIERA
-// Contabilidad Administrativa - UMG
-
 document.addEventListener("DOMContentLoaded", function () {
-
-  const botonMenu = document.getElementById("menuBtn");
+  const menuBtn = document.getElementById("menuBtn");
   const menu = document.getElementById("menu");
-  const enlaces = document.querySelectorAll(".barra-lateral a");
+  const anio = document.getElementById("anio");
 
-  // Abrir y cerrar menú en dispositivos móviles
-  botonMenu.addEventListener("click", function () {
-    const abierto = menu.classList.toggle("abierto");
-    botonMenu.setAttribute("aria-expanded", String(abierto));
-  });
+  if (anio) {
+    anio.textContent = new Date().getFullYear();
+  }
 
-  // Navegación y selección de secciones
-  enlaces.forEach(function (enlace) {
-    enlace.addEventListener("click", function () {
-      enlaces.forEach(function (elemento) {
-        elemento.classList.remove("activo");
-      });
+  if (menuBtn && menu) {
+    menuBtn.addEventListener("click", function () {
+      const abierto = menu.classList.toggle("abierto");
 
-      enlace.classList.add("activo");
-      menu.classList.remove("abierto");
-      botonMenu.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-expanded", String(abierto));
+      menuBtn.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+      );
     });
-  });
 
-  // Año automático en el pie de página
-  document.getElementById("anio").textContent =
-    new Date().getFullYear();
-
+    menu.querySelectorAll("a").forEach(function (enlace) {
+      enlace.addEventListener("click", function () {
+        menu.classList.remove("abierto");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 });
 
-// Leer valores numéricos de los formularios
-function leerNumero(id) {
-  const campo = document.getElementById(id);
-  const texto = campo.value.trim();
-
-  if (texto === "") {
-    return null;
-  }
-
-  const numero = Number(texto);
-
-  if (!Number.isFinite(numero)) {
-    return null;
-  }
-
-  return numero;
-}
-
-// Formatear cantidades en quetzales
 function moneda(valor) {
   return new Intl.NumberFormat("es-GT", {
     style: "currency",
@@ -61,142 +37,467 @@ function moneda(valor) {
   }).format(valor);
 }
 
-// Mostrar resultados
-function mostrarResultado(id, mensaje, esError = false) {
+function porcentaje(valor) {
+  return valor.toLocaleString("es-GT", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }) + " %";
+}
+
+function leerNumero(id, nombre, opciones = {}) {
   const elemento = document.getElementById(id);
 
-  elemento.textContent = mensaje;
-  elemento.style.display = "block";
-  elemento.classList.toggle("error", esError);
+  if (!elemento) {
+    throw new Error("No se encontró el campo: " + nombre);
+  }
+
+  const texto = elemento.value.trim();
+
+  if (texto === "") {
+    throw new Error("Ingresa el dato: " + nombre);
+  }
+
+  const numero = Number(texto);
+
+  if (!Number.isFinite(numero)) {
+    throw new Error("El dato " + nombre + " no es válido.");
+  }
+
+  if (opciones.positivo && numero <= 0) {
+    throw new Error(nombre + " debe ser mayor que cero.");
+  }
+
+  if (opciones.noNegativo && numero < 0) {
+    throw new Error(nombre + " no puede ser negativo.");
+  }
+
+  return numero;
 }
 
-// CALCULADORA 1: PUNTO DE EQUILIBRIO
+function mostrarResultado(id, contenido, error = false) {
+  const elemento = document.getElementById(id);
+
+  if (!elemento) {
+    return;
+  }
+
+  elemento.textContent = contenido;
+  elemento.classList.toggle("error", error);
+}
+
+function ejecutar(id, operacion) {
+  try {
+    const resultado = operacion();
+    mostrarResultado(id, resultado);
+  } catch (error) {
+    mostrarResultado(id, error.message, true);
+  }
+}
+
+function leerFlujos(id) {
+  const elemento = document.getElementById(id);
+
+  if (!elemento) {
+    throw new Error("No se encontró el campo de flujos.");
+  }
+
+  const texto = elemento.value.trim();
+
+  if (!texto) {
+    throw new Error("Ingresa los flujos de efectivo anuales.");
+  }
+
+  const partes = texto.split(",");
+
+  if (partes.length > 100) {
+    throw new Error("Ingresa como máximo 100 flujos anuales.");
+  }
+
+  return partes.map(function (parte) {
+    const dato = parte.trim();
+
+    if (dato === "") {
+      throw new Error("No dejes flujos vacíos entre comas.");
+    }
+
+    const valor = Number(dato);
+
+    if (!Number.isFinite(valor)) {
+      throw new Error(
+        "Flujo inválido. Usa comas entre años y puntos decimales."
+      );
+    }
+
+    return valor;
+  });
+}
+
 function calcularEquilibrio() {
-
-  const costosFijos = leerNumero("costoFijo");
-  const precio = leerNumero("precioVenta");
-  const costoVariable = leerNumero("costoVariable");
-
-  const destino = "resultadoEquilibrio";
-
-  if (
-    costosFijos === null ||
-    precio === null ||
-    costoVariable === null
-  ) {
-    mostrarResultado(destino, "Completa todos los campos.", true);
-    return;
-  }
-
-  if (
-    costosFijos < 0 ||
-    precio <= 0 ||
-    costoVariable < 0
-  ) {
-    mostrarResultado(
-      destino,
-      "Ingresa costos no negativos y un precio mayor que cero.",
-      true
+  ejecutar("resultadoEquilibrio", function () {
+    const fijos = leerNumero(
+      "peFijos",
+      "Costos fijos",
+      { noNegativo: true }
     );
-    return;
-  }
 
-  if (precio <= costoVariable) {
-    mostrarResultado(
-      destino,
-      "El precio debe ser mayor que el costo variable unitario.",
-      true
+    const precio = leerNumero(
+      "pePrecio",
+      "Precio unitario",
+      { positivo: true }
     );
-    return;
-  }
 
-  const margenContribucion = precio - costoVariable;
-  const puntoEquilibrio = costosFijos / margenContribucion;
-  const unidades = Math.ceil(puntoEquilibrio);
+    const variable = leerNumero(
+      "peVariable",
+      "Costo variable",
+      { noNegativo: true }
+    );
 
-  mostrarResultado(
-    destino,
-    "Punto de equilibrio: " +
-    unidades.toLocaleString("es-GT") +
-    " unidades. Margen de contribución unitario: " +
-    moneda(margenContribucion) + "."
-  );
+    const contribucion = precio - variable;
+
+    if (contribucion <= 0) {
+      throw new Error(
+        "El precio debe ser mayor que el costo variable unitario."
+      );
+    }
+
+    const equilibrio = fijos / contribucion;
+    const unidades = Math.ceil(equilibrio);
+
+    return "Punto de equilibrio: " +
+      equilibrio.toFixed(2) +
+      " unidades. Debes vender al menos " +
+      unidades +
+      " unidades completas para cubrir los costos.";
+  });
 }
 
-// CALCULADORA 2: MARGEN DE UTILIDAD NETA
 function calcularMargen() {
-
-  const ventas = leerNumero("ventas");
-  const utilidad = leerNumero("utilidad");
-
-  const destino = "resultadoMargen";
-
-  if (ventas === null || utilidad === null) {
-    mostrarResultado(destino, "Completa todos los campos.", true);
-    return;
-  }
-
-  if (ventas <= 0) {
-    mostrarResultado(
-      destino,
-      "Las ventas deben ser mayores que cero.",
-      true
+  ejecutar("resultadoMargen", function () {
+    const utilidad = leerNumero(
+      "margenUtilidad",
+      "Utilidad neta"
     );
-    return;
-  }
 
-  const margen = (utilidad / ventas) * 100;
+    const ventas = leerNumero(
+      "margenVentas",
+      "Ventas netas",
+      { positivo: true }
+    );
 
-  mostrarResultado(
-    destino,
-    "Margen de utilidad neta: " +
-    margen.toFixed(2) + "%."
-  );
+    const margen = (utilidad / ventas) * 100;
+
+    return "Margen de utilidad neta: " +
+      porcentaje(margen) +
+      ". Por cada Q100 vendidos, el resultado neto es " +
+      moneda(margen) + ".";
+  });
 }
 
-// CALCULADORA 3: VARIACIÓN PRESUPUESTARIA
 function calcularVariacion() {
-
-  const presupuesto = leerNumero("presupuesto");
-  const real = leerNumero("real");
-
-  const destino = "resultadoVariacion";
-
-  if (presupuesto === null || real === null) {
-    mostrarResultado(destino, "Completa todos los campos.", true);
-    return;
-  }
-
-  if (presupuesto < 0 || real < 0) {
-    mostrarResultado(
-      destino,
-      "Los importes no pueden ser negativos.",
-      true
+  ejecutar("resultadoVariacion", function () {
+    const presupuesto = leerNumero(
+      "varPresupuesto",
+      "Valor presupuestado"
     );
-    return;
+
+    const real = leerNumero(
+      "varReal",
+      "Valor real"
+    );
+
+    const variacion = real - presupuesto;
+
+    let descripcion = "No existe variación.";
+
+    if (variacion > 0) {
+      descripcion = "El valor real supera al presupuestado.";
+    } else if (variacion < 0) {
+      descripcion = "El valor real es menor que el presupuestado.";
+    }
+
+    return "Variación: " +
+      moneda(variacion) +
+      ". " +
+      descripcion +
+      " Su efecto favorable o desfavorable depende de si son ingresos o gastos.";
+  });
+}
+
+function calcularROA() {
+  ejecutar("resultadoROA", function () {
+    const utilidad = leerNumero(
+      "roaUtilidad",
+      "Utilidad neta"
+    );
+
+    const activos = leerNumero(
+      "roaActivos",
+      "Activos promedio",
+      { positivo: true }
+    );
+
+    const roa = (utilidad / activos) * 100;
+
+    return "Rentabilidad sobre activos: " +
+      porcentaje(roa) +
+      ". Compara el indicador con empresas similares.";
+  });
+}
+
+function calcularEficiencia() {
+  ejecutar("resultadoEficiencia", function () {
+    const gastos = leerNumero(
+      "efGastos",
+      "Gastos operativos",
+      { noNegativo: true }
+    );
+
+    const ventas = leerNumero(
+      "efVentas",
+      "Ventas netas",
+      { positivo: true }
+    );
+
+    const indicador = (gastos / ventas) * 100;
+
+    return "Gastos operativos sobre ventas: " +
+      porcentaje(indicador) +
+      ". Este porcentaje debe analizarse según el sector y período.";
+  });
+}
+
+function calcularFlujo() {
+  ejecutar("resultadoFlujo", function () {
+    const entradas = leerNumero(
+      "flujoEntradas",
+      "Entradas",
+      { noNegativo: true }
+    );
+
+    const salidas = leerNumero(
+      "flujoSalidas",
+      "Salidas",
+      { noNegativo: true }
+    );
+
+    const flujo = entradas - salidas;
+
+    let mensaje = "El flujo neto es cero.";
+
+    if (flujo > 0) {
+      mensaje = "Las entradas superan las salidas.";
+    } else if (flujo < 0) {
+      mensaje = "Las salidas superan las entradas.";
+    }
+
+    return "Flujo neto: " +
+      moneda(flujo) +
+      ". " +
+      mensaje;
+  });
+}
+
+function calcularComprarProducir() {
+  ejecutar("resultadoComprarProducir", function () {
+    const unidades = leerNumero(
+      "cpUnidades",
+      "Unidades",
+      { positivo: true }
+    );
+
+    if (!Number.isInteger(unidades)) {
+      throw new Error("La cantidad de unidades debe ser entera.");
+    }
+
+    const compra = leerNumero(
+      "cpCompra",
+      "Precio de compra",
+      { noNegativo: true }
+    );
+
+    const variable = leerNumero(
+      "cpVariable",
+      "Costo variable",
+      { noNegativo: true }
+    );
+
+    const fijo = leerNumero(
+      "cpFijo",
+      "Costos fijos adicionales",
+      { noNegativo: true }
+    );
+
+    const costoComprar = unidades * compra;
+    const costoProducir = unidades * variable + fijo;
+    const diferencia = Math.abs(costoComprar - costoProducir);
+
+    let recomendacion;
+
+    if (costoComprar < costoProducir) {
+      recomendacion = "Comprar resulta más económico.";
+    } else if (costoProducir < costoComprar) {
+      recomendacion = "Producir resulta más económico.";
+    } else {
+      recomendacion = "Ambas alternativas tienen el mismo costo.";
+    }
+
+    return "Comprar: " +
+      moneda(costoComprar) +
+      ". Producir: " +
+      moneda(costoProducir) +
+      ". Diferencia: " +
+      moneda(diferencia) +
+      ". " +
+      recomendacion;
+  });
+}
+
+function calcularPatrimonio() {
+  ejecutar("resultadoPatrimonio", function () {
+    const activos = leerNumero(
+      "patActivos",
+      "Activos",
+      { positivo: true }
+    );
+
+    const pasivos = leerNumero(
+      "patPasivos",
+      "Pasivos",
+      { noNegativo: true }
+    );
+
+    const patrimonio = activos - pasivos;
+    const endeudamiento = (pasivos / activos) * 100;
+
+    return "Patrimonio contable: " +
+      moneda(patrimonio) +
+      ". Endeudamiento: " +
+      porcentaje(endeudamiento) +
+      ".";
+  });
+}
+
+function valorActualNeto(inversion, tasa, flujos) {
+  let van = -inversion;
+
+  for (let i = 0; i < flujos.length; i++) {
+    van += flujos[i] / Math.pow(1 + tasa, i + 1);
   }
 
-  const diferencia = real - presupuesto;
+  return van;
+}
 
-  let porcentajeTexto = "No calculable";
+function calcularVAN() {
+  ejecutar("resultadoVAN", function () {
+    const inversion = leerNumero(
+      "vanInversion",
+      "Inversión inicial",
+      { positivo: true }
+    );
 
-  if (presupuesto !== 0) {
-    const porcentaje = (diferencia / presupuesto) * 100;
-    porcentajeTexto = porcentaje.toFixed(2) + "%";
-  }
+    const tasaPorcentaje = leerNumero(
+      "vanTasa",
+      "Tasa de descuento"
+    );
 
-  let interpretacion = "Sin variación";
+    if (tasaPorcentaje <= -100) {
+      throw new Error("La tasa debe ser mayor que -100 %.");
+    }
 
-  if (diferencia > 0) {
-    interpretacion = "El importe real supera al presupuestado";
-  } else if (diferencia < 0) {
-    interpretacion = "El importe real es menor al presupuestado";
-  }
+    const flujos = leerFlujos("vanFlujos");
+    const tasa = tasaPorcentaje / 100;
 
-  mostrarResultado(
-    destino,
-    "Variación: " + moneda(diferencia) +
-    ". Variación porcentual: " + porcentajeTexto +
-    ". " + interpretacion + "."
-  );
+    const van = valorActualNeto(inversion, tasa, flujos);
+
+    if (!Number.isFinite(van)) {
+      throw new Error(
+        "No fue posible calcular el VAN con estos datos."
+      );
+    }
+
+    let interpretacion;
+
+    if (Math.abs(van) < 0.005) {
+      interpretacion =
+        "El proyecto está aproximadamente en el punto de indiferencia.";
+    } else if (van > 0) {
+      interpretacion =
+        "El proyecto genera valor bajo la tasa utilizada.";
+    } else {
+      interpretacion =
+        "El proyecto no alcanza la rentabilidad exigida.";
+    }
+
+    return "Valor Actual Neto: " +
+      moneda(van) +
+      ". " +
+      interpretacion;
+  });
+}
+
+function calcularTIR() {
+  ejecutar("resultadoTIR", function () {
+    const inversion = leerNumero(
+      "tirInversion",
+      "Inversión inicial",
+      { positivo: true }
+    );
+
+    const flujos = leerFlujos("tirFlujos");
+
+    if (flujos.some(function (flujo) {
+      return flujo < 0;
+    })) {
+      throw new Error(
+        "Esta calculadora requiere flujos anuales no negativos."
+      );
+    }
+
+    const total = flujos.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+
+    if (total <= 0) {
+      throw new Error(
+        "Debe existir al menos un flujo de efectivo positivo."
+      );
+    }
+
+    let inferior = -0.999999;
+    let superior = 1;
+
+    while (
+      valorActualNeto(inversion, superior, flujos) > 0 &&
+      superior < 1000000
+    ) {
+      superior = superior * 2 + 1;
+    }
+
+    if (valorActualNeto(inversion, superior, flujos) > 0) {
+      throw new Error(
+        "No se pudo delimitar la TIR con los datos proporcionados."
+      );
+    }
+
+    for (let i = 0; i < 200; i++) {
+      const medio = (inferior + superior) / 2;
+      const van = valorActualNeto(inversion, medio, flujos);
+
+      if (van > 0) {
+        inferior = medio;
+      } else {
+        superior = medio;
+      }
+    }
+
+    const tir = ((inferior + superior) / 2) * 100;
+
+    if (!Number.isFinite(tir)) {
+      throw new Error("No fue posible calcular la TIR.");
+    }
+
+    return "Tasa Interna de Retorno: " +
+      porcentaje(tir) +
+      ". Compárala con la tasa mínima de rendimiento requerida.";
+  });
 }
