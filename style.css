@@ -670,3 +670,23 @@ input {
     transform: none;
   }
 }
+
+.encabezado {
+  background-color: #123453;
+  border-bottom: 3px solid #d2aa43;
+  box-shadow: 0 5px 18px rgba(18, 52, 83, 0.20);
+}
+
+.encabezado .marca h1 {
+  color: #ffffff;
+}
+
+.encabezado .marca p {
+  color: #dce8f5;
+}
+
+.encabezado .logo-universidad {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+}
