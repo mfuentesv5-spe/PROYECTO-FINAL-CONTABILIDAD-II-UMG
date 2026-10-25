@@ -4,52 +4,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Proyecto académico de Contabilidad Administrativa">
-  <title>Aula Financiera | Contabilidad Administrativa</title>
+  <meta name="description" content="Plataforma académica de Contabilidad Administrativa de la Universidad Mariano Gálvez de Guatemala.">
+  <title>Contabilidad Administrativa | UMG</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-
   <header class="encabezado">
-    
-<div class="marca">
-  <img
-    src="logo-umg.png"
-    alt="Logotipo de la Universidad Mariano Gálvez de Guatemala"
-    class="logo-universidad"
-  >
-
-  <div>
-    <h1>Universidad Mariano Gálvez de Guatemala</h1>
-    <p>Contabilidad Administrativa</p>
-  </div>
-</div>
-    <button id="menuBtn" class="menu-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <div class="marca">
+      <img src="logo-umg.png" alt="Logotipo de la Universidad Mariano Gálvez de Guatemala" class="logo-universidad">
+      <div>
+        <h1>Universidad Mariano Gálvez de Guatemala</h1>
+        <p>Contabilidad Administrativa</p>
+      </div>
+    </div>
+    <button id="menuBtn" class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
   </header>
 
   <div class="estructura">
-
-    <nav class="barra-lateral" id="menu">
+    <nav class="barra-lateral" id="menu" aria-label="Menú académico">
       <h3>MENÚ ACADÉMICO</h3>
-      <a href="#inicio" class="activo">🏠 Inicio</a>
-      <a href="#objetivos">🎯 Objetivos</a>
-      <a href="#fundamentos">💻 Fundamentos Web</a>
-      <a href="#teoria">📚 Teoría Contable</a>
-      <a href="#herramientas">🧮 Herramientas</a>
-      <a href="#recursos">📖 Recursos</a>
-      <a href="#universidad">🎓 Vida Universitaria</a>
+      <a href="#inicio">Inicio</a>
+      <a href="#objetivos">Objetivos</a>
+      <a href="#diseno">Diseño web</a>
+      <a href="#fundamentos">Fundamentos Web</a>
+      <a href="#teoria">Teoría Contable</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#gestion">Gestión Financiera</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#universidad">Vida Universitaria</a>
     </nav>
 
     <main class="contenido">
-
       <section id="inicio" class="hero">
         <span class="etiqueta">PROYECTO FINAL UNIVERSITARIO</span>
         <h2>Contabilidad Administrativa</h2>
         <p>
-          Un espacio educativo dedicado al estudio de los costos,
-          presupuestos y herramientas financieras que apoyan
-          la toma de decisiones empresariales.
+          Plataforma educativa dedicada al estudio de los costos,
+          presupuestos, indicadores de rentabilidad y herramientas
+          financieras aplicadas a la toma de decisiones empresariales.
         </p>
         <a href="#teoria" class="boton">Explorar contenidos</a>
       </section>
@@ -57,200 +50,488 @@
       <section id="objetivos" class="seccion">
         <h2>Objetivos del proyecto</h2>
         <div class="linea"></div>
-
         <div class="tarjeta">
           <h3>Objetivo general</h3>
           <p>
-            Desarrollar una plataforma web educativa que facilite
-            el aprendizaje de los principales conceptos de
-            Contabilidad Administrativa mediante información
-            organizada y herramientas interactivas.
+            Desarrollar una página web educativa e interactiva que
+            facilite el aprendizaje de los fundamentos de la
+            Contabilidad Administrativa y su aplicación en la
+            toma de decisiones empresariales.
           </p>
-
           <h3>Objetivos específicos</h3>
           <ul>
-            <li>Explicar los fundamentos de la Contabilidad Administrativa.</li>
-            <li>Identificar la importancia de los costos empresariales.</li>
-            <li>Aplicar herramientas de cálculo financiero.</li>
-            <li>Relacionar la tecnología con el aprendizaje contable.</li>
+            <li>Explicar los conceptos fundamentales de la Contabilidad Administrativa.</li>
+            <li>Diferenciar la Contabilidad Administrativa, Financiera y de Costos.</li>
+            <li>Aplicar herramientas para evaluar costos, rentabilidad y eficiencia.</li>
+            <li>Analizar alternativas de inversión mediante VAN y TIR.</li>
+            <li>Integrar recursos tecnológicos para fortalecer el aprendizaje.</li>
           </ul>
+        </div>
+      </section>
+
+      <section id="diseno" class="seccion">
+        <h2>Aspectos fundamentales del diseño web</h2>
+        <div class="linea"></div>
+        <p>
+          El sitio está organizado para facilitar el acceso a los
+          contenidos académicos, mantener una presentación visual
+          uniforme y permitir su consulta desde distintos dispositivos.
+        </p>
+        <div class="cuadricula">
+          <article class="tarjeta">
+            <div class="simbolo">01</div>
+            <h3>Identidad visual</h3>
+            <p>
+              La combinación de azul, blanco y dorado ofrece una
+              presentación académica formal, con colores consistentes
+              en los encabezados, botones y elementos informativos.
+            </p>
+          </article>
+          <article class="tarjeta">
+            <div class="simbolo">02</div>
+            <h3>Navegación</h3>
+            <p>
+              El menú lateral organiza los contenidos por temas
+              y permite acceder a cada sección sin recorrer
+              toda la página.
+            </p>
+          </article>
+          <article class="tarjeta">
+            <div class="simbolo">03</div>
+            <h3>Adaptabilidad</h3>
+            <p>
+              El diseño utiliza reglas de presentación que permiten
+              ajustar los elementos a computadoras, tabletas y celulares.
+            </p>
+          </article>
+          <article class="tarjeta">
+            <div class="simbolo">04</div>
+            <h3>Legibilidad</h3>
+            <p>
+              Se utilizan títulos jerarquizados, tipografía clara,
+              espacios adecuados y contraste entre texto y fondo.
+            </p>
+          </article>
+          <article class="tarjeta">
+            <div class="simbolo">05</div>
+            <h3>Organización</h3>
+            <p>
+              Los contenidos avanzan desde los conceptos generales
+              hasta los ejemplos y herramientas financieras.
+            </p>
+          </article>
+          <article class="tarjeta">
+            <div class="simbolo">06</div>
+            <h3>Interactividad</h3>
+            <p>
+              Las calculadoras permiten ingresar valores, realizar
+              operaciones y obtener resultados con interpretaciones.
+            </p>
+          </article>
         </div>
       </section>
 
       <section id="fundamentos" class="seccion">
         <h2>Fundamentos del desarrollo web</h2>
         <div class="linea"></div>
-        <p>
-          El desarrollo web permite crear plataformas digitales
-          que presentan información y ofrecen funcionalidades
-          interactivas a los usuarios.
-        </p>
-
         <div class="cuadricula">
           <article class="tarjeta">
             <div class="simbolo">HTML</div>
             <h3>HTML5</h3>
             <p>
-              Lenguaje de marcado utilizado para organizar
-              títulos, párrafos, imágenes, enlaces y formularios.
+              Organiza los títulos, párrafos, formularios,
+              tablas, imágenes y enlaces que componen el sitio.
             </p>
           </article>
-
           <article class="tarjeta">
             <div class="simbolo">CSS</div>
             <h3>CSS3</h3>
             <p>
-              Permite controlar colores, tipografías,
-              espacios y diseños adaptables a diferentes pantallas.
+              Define colores, tipografía, tamaños, distribución
+              y presentación adaptable a distintas pantallas.
             </p>
           </article>
-
           <article class="tarjeta">
             <div class="simbolo">JS</div>
             <h3>JavaScript</h3>
             <p>
-              Lenguaje de programación que agrega interactividad,
-              validaciones y cálculos a una página web.
+              Permite validar datos, realizar cálculos financieros
+              y controlar el menú de navegación.
             </p>
           </article>
         </div>
       </section>
 
       <section id="teoria" class="seccion">
-        <h2>Teoría de Contabilidad Administrativa</h2>
+        <h2>Fundamentos de Contabilidad Administrativa</h2>
         <div class="linea"></div>
-
         <div class="cuadricula">
           <article class="tarjeta">
-            <h3>¿Qué es la Contabilidad Administrativa?</h3>
+            <h3>Contabilidad Administrativa</h3>
             <p>
-              Es una rama de la contabilidad que proporciona
-              información económica y financiera a los
-              administradores para planificar, controlar
-              y tomar decisiones.
+              Proporciona información económica y financiera para
+              apoyar la planificación, el control y las decisiones
+              internas de una organización.
             </p>
           </article>
-
+          <article class="tarjeta">
+            <h3>Contabilidad Financiera</h3>
+            <p>
+              Registra y comunica la situación financiera,
+              los resultados y los flujos de efectivo de una
+              entidad a usuarios internos y externos.
+            </p>
+          </article>
+          <article class="tarjeta">
+            <h3>Contabilidad de Costos</h3>
+            <p>
+              Identifica, acumula y analiza los costos asociados
+              con productos, servicios, actividades y procesos.
+            </p>
+          </article>
           <article class="tarjeta">
             <h3>Costos fijos</h3>
             <p>
-              Son aquellos que permanecen constantes dentro
-              de un rango relevante de actividad, como el
-              alquiler mensual de un establecimiento.
+              Permanecen constantes en total dentro de un rango
+              relevante de actividad, como determinados alquileres.
             </p>
           </article>
-
           <article class="tarjeta">
             <h3>Costos variables</h3>
             <p>
-              Cambian en proporción al nivel de producción
-              o actividad, como los materiales directos.
+              Cambian en total según el nivel de actividad,
+              como los materiales directos utilizados en producción.
             </p>
           </article>
-
           <article class="tarjeta">
             <h3>Presupuesto maestro</h3>
             <p>
               Integra los presupuestos operativos y financieros
-              para proyectar las actividades y resultados
-              de una organización.
+              para planificar las actividades de una empresa.
             </p>
           </article>
-
           <article class="tarjeta">
             <h3>Punto de equilibrio</h3>
             <p>
-              Es el nivel de ventas donde los ingresos totales
-              son iguales a los costos totales, por lo que
-              no existe utilidad ni pérdida operativa.
+              Es el nivel de ventas en el que los ingresos
+              cubren los costos totales, sin utilidad ni pérdida operativa.
             </p>
           </article>
-
           <article class="tarjeta">
-            <h3>Toma de decisiones</h3>
+            <h3>Decisiones gerenciales</h3>
             <p>
-              Consiste en analizar información relevante
-              para seleccionar alternativas que favorezcan
-              los objetivos de una empresa.
+              Consisten en comparar alternativas utilizando
+              información relevante para alcanzar los objetivos
+              de una organización.
             </p>
           </article>
+        </div>
+
+        <div class="tarjeta bloque-ampliado">
+          <h3>Diferencias entre las ramas de la contabilidad</h3>
+          <div class="tabla-responsive">
+            <table class="tabla-academica">
+              <thead>
+                <tr>
+                  <th>Aspecto</th>
+                  <th>Administrativa</th>
+                  <th>Financiera</th>
+                  <th>De costos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Objetivo</th>
+                  <td>Apoyar decisiones internas</td>
+                  <td>Informar resultados y situación financiera</td>
+                  <td>Determinar y analizar costos</td>
+                </tr>
+                <tr>
+                  <th>Usuarios</th>
+                  <td>Gerentes y directivos</td>
+                  <td>Usuarios internos y externos</td>
+                  <td>Responsables de producción y administración</td>
+                </tr>
+                <tr>
+                  <th>Enfoque</th>
+                  <td>Presente y futuro</td>
+                  <td>Principalmente hechos registrados</td>
+                  <td>Costos históricos y estimados</td>
+                </tr>
+                <tr>
+                  <th>Ejemplo</th>
+                  <td>Presupuesto de ventas</td>
+                  <td>Estado de resultados</td>
+                  <td>Costo unitario de producción</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tarjeta bloque-ampliado">
+          <h3>Importancia para la toma de decisiones</h3>
+          <p>
+            La información contable permite evaluar precios,
+            controlar gastos, identificar productos rentables,
+            administrar recursos y proyectar resultados.
+            Su utilidad depende de que sea oportuna, relevante
+            y confiable.
+          </p>
         </div>
       </section>
 
       <section id="herramientas" class="seccion">
-        <h2>Herramientas contables interactivas</h2>
+        <h2>Herramientas prácticas</h2>
         <div class="linea"></div>
-        <p>Ingresa los datos para realizar los cálculos.</p>
+        <p>
+          Las siguientes calculadoras utilizan ejemplos en quetzales.
+          Ingresa los datos y presiona el botón correspondiente.
+        </p>
 
-        <div class="cuadricula herramientas-grid">
-
+        <div class="cuadricula">
           <article class="tarjeta calculadora">
             <h3>1. Punto de equilibrio</h3>
-            <p>Determina cuántas unidades deben venderse para cubrir los costos.</p>
-
-            <label for="costoFijo">Costos fijos (Q)</label>
-            <input type="number" id="costoFijo" min="0" step="any" placeholder="Ejemplo: 5000">
-
-            <label for="precioVenta">Precio de venta unitario (Q)</label>
-            <input type="number" id="precioVenta" min="0" step="any" placeholder="Ejemplo: 100">
-
-            <label for="costoVariable">Costo variable unitario (Q)</label>
-            <input type="number" id="costoVariable" min="0" step="any" placeholder="Ejemplo: 60">
-
+            <p>Determina las unidades necesarias para cubrir los costos fijos y variables.</p>
+            <p class="formula">PE = Costos fijos / (Precio unitario - Costo variable unitario)</p>
+            <p class="ejemplo">Ejemplo: Q10,000 / (Q50 - Q30) = 500 unidades.</p>
+            <label for="peFijos">Costos fijos (Q)</label>
+            <input id="peFijos" type="number" step="any" placeholder="10000">
+            <label for="pePrecio">Precio de venta unitario (Q)</label>
+            <input id="pePrecio" type="number" step="any" placeholder="50">
+            <label for="peVariable">Costo variable unitario (Q)</label>
+            <input id="peVariable" type="number" step="any" placeholder="30">
             <button type="button" onclick="calcularEquilibrio()">Calcular</button>
             <div id="resultadoEquilibrio" class="resultado" aria-live="polite"></div>
           </article>
 
           <article class="tarjeta calculadora">
             <h3>2. Margen de utilidad neta</h3>
-            <p>Calcula qué porcentaje de las ventas representa la utilidad neta.</p>
-
-            <label for="ventas">Ventas netas (Q)</label>
-            <input type="number" id="ventas" min="0" step="any" placeholder="Ejemplo: 20000">
-
-            <label for="utilidad">Utilidad neta (Q)</label>
-            <input type="number" id="utilidad" step="any" placeholder="Ejemplo: 4500">
-
+            <p>Expresa qué porcentaje de las ventas netas se convierte en utilidad neta.</p>
+            <p class="formula">Margen = (Utilidad neta / Ventas netas) × 100</p>
+            <p class="ejemplo">Ejemplo: Q8,000 / Q40,000 × 100 = 20 %.</p>
+            <label for="margenUtilidad">Utilidad neta (Q)</label>
+            <input id="margenUtilidad" type="number" step="any" placeholder="8000">
+            <label for="margenVentas">Ventas netas (Q)</label>
+            <input id="margenVentas" type="number" step="any" placeholder="40000">
             <button type="button" onclick="calcularMargen()">Calcular</button>
             <div id="resultadoMargen" class="resultado" aria-live="polite"></div>
           </article>
 
           <article class="tarjeta calculadora">
             <h3>3. Variación presupuestaria</h3>
-            <p>Compara un importe presupuestado con su resultado real.</p>
-
-            <label for="presupuesto">Importe presupuestado (Q)</label>
-            <input type="number" id="presupuesto" min="0" step="any" placeholder="Ejemplo: 10000">
-
-            <label for="real">Importe real (Q)</label>
-            <input type="number" id="real" min="0" step="any" placeholder="Ejemplo: 11500">
-
+            <p>Compara el resultado real con el valor presupuestado.</p>
+            <p class="formula">Variación = Real - Presupuestado</p>
+            <p class="ejemplo">Ejemplo: Q12,000 - Q10,000 = Q2,000.</p>
+            <label for="varPresupuesto">Valor presupuestado (Q)</label>
+            <input id="varPresupuesto" type="number" step="any" placeholder="10000">
+            <label for="varReal">Valor real (Q)</label>
+            <input id="varReal" type="number" step="any" placeholder="12000">
             <button type="button" onclick="calcularVariacion()">Calcular</button>
             <div id="resultadoVariacion" class="resultado" aria-live="polite"></div>
           </article>
+        </div>
+      </section>
 
+      <section id="gestion" class="seccion">
+        <h2>Herramientas de gestión financiera</h2>
+        <div class="linea"></div>
+        <p>
+          Estos instrumentos ayudan a analizar rentabilidad,
+          eficiencia, liquidez, patrimonio y proyectos de inversión.
+        </p>
+
+        <div class="cuadricula">
+          <article class="tarjeta calculadora">
+            <h3>4. Rentabilidad sobre activos (ROA)</h3>
+            <p>Relaciona la utilidad neta con los activos promedio de una empresa.</p>
+            <p class="formula">ROA = (Utilidad neta / Activos promedio) × 100</p>
+            <p class="ejemplo">Ejemplo: Q15,000 / Q100,000 = 15 %.</p>
+            <label for="roaUtilidad">Utilidad neta (Q)</label>
+            <input id="roaUtilidad" type="number" step="any" placeholder="15000">
+            <label for="roaActivos">Activos promedio (Q)</label>
+            <input id="roaActivos" type="number" step="any" placeholder="100000">
+            <button type="button" onclick="calcularROA()">Calcular</button>
+            <div id="resultadoROA" class="resultado" aria-live="polite"></div>
+          </article>
+
+          <article class="tarjeta calculadora">
+            <h3>5. Eficiencia operativa</h3>
+            <p>Analiza el peso de los gastos operativos sobre las ventas netas.</p>
+            <p class="formula">Indicador = (Gastos operativos / Ventas netas) × 100</p>
+            <p class="ejemplo">Ejemplo: Q12,000 / Q50,000 = 24 %.</p>
+            <label for="efGastos">Gastos operativos (Q)</label>
+            <input id="efGastos" type="number" step="any" placeholder="12000">
+            <label for="efVentas">Ventas netas (Q)</label>
+            <input id="efVentas" type="number" step="any" placeholder="50000">
+            <button type="button" onclick="calcularEficiencia()">Calcular</button>
+            <div id="resultadoEficiencia" class="resultado" aria-live="polite"></div>
+          </article>
+
+          <article class="tarjeta calculadora">
+            <h3>6. Flujo neto de efectivo</h3>
+            <p>Calcula la diferencia entre entradas y salidas de efectivo de un período.</p>
+            <p class="formula">Flujo neto = Entradas - Salidas</p>
+            <p class="ejemplo">Ejemplo: Q18,000 - Q12,500 = Q5,500.</p>
+            <label for="flujoEntradas">Entradas de efectivo (Q)</label>
+            <input id="flujoEntradas" type="number" step="any" placeholder="18000">
+            <label for="flujoSalidas">Salidas de efectivo (Q)</label>
+            <input id="flujoSalidas" type="number" step="any" placeholder="12500">
+            <button type="button" onclick="calcularFlujo()">Calcular</button>
+            <div id="resultadoFlujo" class="resultado" aria-live="polite"></div>
+          </article>
+
+          <article class="tarjeta calculadora">
+            <h3>7. Decisión de comprar o producir</h3>
+            <p>Compara los costos relevantes de comprar un producto o fabricarlo internamente.</p>
+            <p class="formula">Comprar = Unidades × Precio de compra</p>
+            <p class="formula">Producir = Unidades × Costo variable + Costos fijos adicionales</p>
+            <p class="ejemplo">
+              Ejemplo: comprar 500 unidades a Q45 cuesta Q22,500;
+              producirlas a Q32 más Q4,000 cuesta Q20,000.
+            </p>
+            <label for="cpUnidades">Cantidad de unidades</label>
+            <input id="cpUnidades" type="number" step="1" placeholder="500">
+            <label for="cpCompra">Precio de compra unitario (Q)</label>
+            <input id="cpCompra" type="number" step="any" placeholder="45">
+            <label for="cpVariable">Costo variable de producción unitario (Q)</label>
+            <input id="cpVariable" type="number" step="any" placeholder="32">
+            <label for="cpFijo">Costos fijos adicionales de producción (Q)</label>
+            <input id="cpFijo" type="number" step="any" placeholder="4000">
+            <button type="button" onclick="calcularComprarProducir()">Calcular</button>
+            <div id="resultadoComprarProducir" class="resultado" aria-live="polite"></div>
+          </article>
+
+          <article class="tarjeta calculadora">
+            <h3>8. Análisis patrimonial</h3>
+            <p>Determina el patrimonio contable y la proporción de activos financiada mediante pasivos.</p>
+            <p class="formula">Patrimonio = Activos - Pasivos</p>
+            <p class="formula">Endeudamiento = (Pasivos / Activos) × 100</p>
+            <p class="ejemplo">
+              Ejemplo: activos Q100,000 y pasivos Q40,000:
+              patrimonio Q60,000 y endeudamiento 40 %.
+            </p>
+            <label for="patActivos">Activos totales (Q)</label>
+            <input id="patActivos" type="number" step="any" placeholder="100000">
+            <label for="patPasivos">Pasivos totales (Q)</label>
+            <input id="patPasivos" type="number" step="any" placeholder="40000">
+            <button type="button" onclick="calcularPatrimonio()">Calcular</button>
+            <div id="resultadoPatrimonio" class="resultado" aria-live="polite"></div>
+          </article>
+
+          <article class="tarjeta calculadora">
+            <h3>9. Valor Actual Neto (VAN)</h3>
+            <p>
+              Evalúa una inversión descontando sus flujos futuros
+              a una tasa que representa el rendimiento requerido.
+            </p>
+            <p class="formula">VAN = -Inversión inicial + Σ [Flujo anual / (1 + tasa)^año]</p>
+            <p class="ejemplo">
+              Ejemplo: inversión Q10,000, tasa 10 % y flujos
+              anuales Q4,000, Q4,500 y Q5,000.
+            </p>
+            <label for="vanInversion">Inversión inicial (Q)</label>
+            <input id="vanInversion" type="number" step="any" placeholder="10000">
+            <label for="vanTasa">Tasa de descuento anual (%)</label>
+            <input id="vanTasa" type="number" step="any" placeholder="10">
+            <label for="vanFlujos">Flujos anuales separados por comas</label>
+            <input id="vanFlujos" type="text" placeholder="4000, 4500, 5000">
+            <p class="nota-campo">Separa los años con comas y utiliza puntos para los decimales.</p>
+            <button type="button" onclick="calcularVAN()">Calcular</button>
+            <div id="resultadoVAN" class="resultado" aria-live="polite"></div>
+          </article>
+
+          <article class="tarjeta calculadora">
+            <h3>10. Tasa Interna de Retorno (TIR)</h3>
+            <p>
+              Determina la tasa de descuento que hace que el VAN
+              de una inversión sea igual a cero.
+            </p>
+            <p class="formula">VAN(TIR) = 0</p>
+            <p class="ejemplo">
+              Ejemplo: inversión Q10,000 y flujos anuales
+              Q4,000, Q4,500 y Q5,000.
+            </p>
+            <label for="tirInversion">Inversión inicial (Q)</label>
+            <input id="tirInversion" type="number" step="any" placeholder="10000">
+            <label for="tirFlujos">Flujos anuales separados por comas</label>
+            <input id="tirFlujos" type="text" placeholder="4000, 4500, 5000">
+            <p class="nota-campo">
+              La calculadora admite una inversión inicial seguida
+              de flujos anuales no negativos.
+            </p>
+            <button type="button" onclick="calcularTIR()">Calcular</button>
+            <div id="resultadoTIR" class="resultado" aria-live="polite"></div>
+          </article>
+        </div>
+
+        <div class="tarjeta bloque-ampliado">
+          <h3>Interpretación de las herramientas financieras</h3>
+          <p>
+            Los indicadores de rentabilidad permiten comparar
+            resultados entre períodos y empresas similares.
+            Los indicadores de eficiencia ayudan a identificar
+            oportunidades de control de gastos.
+          </p>
+          <p>
+            Un VAN positivo indica que un proyecto supera la
+            tasa de descuento utilizada, según los flujos
+            estimados. La TIR debe compararse con el rendimiento
+            mínimo requerido por el inversionista.
+          </p>
+          <p>
+            La decisión de comprar o producir también debe
+            considerar calidad, capacidad instalada, plazos
+            de entrega y costos de oportunidad.
+          </p>
         </div>
       </section>
 
       <section id="recursos" class="seccion">
         <h2>Recursos académicos</h2>
         <div class="linea"></div>
-
         <div class="tarjeta">
           <h3>Fuentes de consulta</h3>
           <p>
-            Estos recursos permiten ampliar los conocimientos
-            relacionados con la contabilidad y la tecnología.
+            Los siguientes recursos permiten ampliar los
+            conocimientos relacionados con la contabilidad
+            y el desarrollo web.
           </p>
           <ul>
-            <li><a href="https://www.umg.edu.gt/" target="_blank" rel="noopener noreferrer">Universidad Mariano Gálvez de Guatemala</a></li>
-            <li><a href="https://developer.mozilla.org/es/" target="_blank" rel="noopener noreferrer">MDN Web Docs - Desarrollo Web</a></li>
-            <li><a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">W3Schools - Programación Web</a></li>
+            <li>
+              <a href="https://www.umg.edu.gt/" target="_blank" rel="noopener noreferrer">
+                Universidad Mariano Gálvez de Guatemala
+              </a>
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/es/" target="_blank" rel="noopener noreferrer">
+                MDN Web Docs
+              </a>
+            </li>
+            <li>
+              <a href="https://www.investopedia.com/terms/n/npv.asp" target="_blank" rel="noopener noreferrer">
+                Lectura complementaria sobre VAN
+              </a>
+            </li>
+            <li>
+              <a href="https://www.investopedia.com/terms/i/irr.asp" target="_blank" rel="noopener noreferrer">
+                Lectura complementaria sobre TIR
+              </a>
+            </li>
           </ul>
+
+          <h3>Presentación y recursos multimedia</h3>
           <p>
-            También se recomienda consultar los libros y
-            materiales de Contabilidad Administrativa
-            proporcionados por el docente.
+            La exposición virtual puede desarrollar los conceptos
+            principales de Contabilidad Administrativa y explicar
+            dos herramientas prácticas mediante ejemplos.
+          </p>
+          <div class="espacio-foto">
+            Espacio para incorporar la presentación o el video académico.
+          </div>
+          <p class="nota-campo">
+            Incorporar aquí el material multimedia y las referencias
+            bibliográficas utilizadas durante el curso.
           </p>
         </div>
       </section>
@@ -258,34 +539,53 @@
       <section id="universidad" class="seccion">
         <h2>Vida universitaria</h2>
         <div class="linea"></div>
-
         <div class="tarjeta">
-          <h3>Experiencia de aprendizaje</h3>
+          <h3>Participación en actividades institucionales</h3>
           <p>
-            La formación universitaria permite desarrollar
-            habilidades de investigación, pensamiento crítico,
-            trabajo en equipo y aplicación de conocimientos
-            en situaciones reales.
+            Las actividades universitarias contribuyen al
+            desarrollo académico, profesional y personal
+            de los estudiantes.
           </p>
-          <p>
-            Este espacio está destinado a incorporar fotografías
-            y experiencias auténticas del estudiante durante
-            el desarrollo del proyecto.
-          </p>
-          <div class="espacio-foto">
-            📷 Espacio para fotografías universitarias
+
+          <div class="cuadricula evidencia-grid">
+            <article class="evidencia">
+              <h3>Aniversario de la Universidad</h3>
+              <div class="espacio-foto">
+                Espacio para fotografía de participación individual
+                en el Aniversario UMG.
+              </div>
+              <p>
+                Agregar la fecha, una descripción de la actividad
+                y la experiencia personal de participación.
+              </p>
+            </article>
+
+            <article class="evidencia">
+              <h3>Convención de la Universidad</h3>
+              <div class="espacio-foto">
+                Espacio para fotografía de participación individual
+                en la Convención UMG.
+              </div>
+              <p>
+                Agregar la fecha, una descripción de la actividad
+                y la experiencia personal de participación.
+              </p>
+            </article>
           </div>
+
+          <p class="nota-campo">
+            Las fotografías deben corresponder a la participación
+            individual en ambas actividades institucionales del año en curso.
+          </p>
         </div>
       </section>
 
       <footer class="pie">
         <p>Proyecto académico | Contabilidad Administrativa</p>
         <p>Universidad Mariano Gálvez de Guatemala</p>
-        <p>© <span id="anio"></span> Aula Financiera</p>
+        <p>© <span id="anio"></span> Proyecto académico UMG</p>
       </footer>
-
     </main>
   </div>
-
 </body>
 </html>
