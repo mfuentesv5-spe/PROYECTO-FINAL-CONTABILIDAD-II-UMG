@@ -701,3 +701,113 @@ input {
   flex-shrink: 0;
   background-color: transparent;
 }
+
+/* Actividades universitarias */
+
+.actividad-universitaria {
+  background-color: #ffffff;
+  border: 1px solid #dce4ed;
+  border-top: 3px solid #d2aa43;
+  border-radius: 15px;
+  padding: 25px;
+  margin-top: 28px;
+  box-shadow: 0 8px 24px rgba(18, 52, 83, 0.08);
+}
+
+.actividad-universitaria h3 {
+  color: #123453;
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+
+.actividad-universitaria p {
+  color: #64748b;
+  margin-bottom: 22px;
+}
+
+/* Galería fotográfica */
+
+.galeria-universitaria {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.galeria-universitaria a {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #f3f6fa;
+  border: 1px solid #dce4ed;
+  box-shadow: 0 4px 12px rgba(18, 52, 83, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.galeria-universitaria img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.galeria-universitaria a:focus-visible {
+  outline: 3px solid #d2aa43;
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .galeria-universitaria a:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(18, 52, 83, 0.2);
+  }
+
+  .galeria-universitaria a:hover img {
+    transform: scale(1.04);
+  }
+}
+
+/* Adaptación para tabletas */
+
+@media (max-width: 1000px) {
+  .galeria-universitaria {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .galeria-universitaria img {
+    height: 220px;
+  }
+}
+
+/* Adaptación para celulares */
+
+@media (max-width: 600px) {
+  .actividad-universitaria {
+    padding: 16px;
+  }
+
+  .galeria-universitaria {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .galeria-universitaria img {
+    height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galeria-universitaria a,
+  .galeria-universitaria img {
+    transition: none;
+  }
+
+  .galeria-universitaria a:hover,
+  .galeria-universitaria a:hover img {
+    transform: none;
+  }
+}
