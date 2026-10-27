@@ -602,3 +602,113 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// VISOR FOTOGRÁFICO UNIVERSITARIO
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const fotos = document.querySelectorAll(
+    "#contenido-aniversario .galeria-universitaria a, " +
+    "#contenido-convencion .galeria-universitaria a"
+  );
+
+  if (fotos.length === 0) return;
+
+  const visor = document.createElement("div");
+  visor.id = "visor-umg";
+
+  visor.innerHTML = `
+    <div class="visor-umg-contenido" role="dialog"
+         aria-modal="true" aria-label="Visor fotográfico">
+
+      <button class="visor-umg-cerrar" type="button"
+              aria-label="Cerrar fotografía">×</button>
+
+      <button class="visor-umg-anterior" type="button"
+              aria-label="Fotografía anterior">❮</button>
+
+      <img class="visor-umg-imagen" alt="Fotografía universitaria">
+
+      <button class="visor-umg-siguiente" type="button"
+              aria-label="Fotografía siguiente">❯</button>
+
+      <div class="visor-umg-contador"></div>
+    </div>
+  `;
+
+  document.body.appendChild(visor);
+
+  const imagen = visor.querySelector(".visor-umg-imagen");
+  const contador = visor.querySelector(".visor-umg-contador");
+
+  let galeriaActual = [];
+  let posicion = 0;
+
+  function mostrarFoto() {
+    const foto = galeriaActual[posicion];
+    imagen.src = foto.href;
+    contador.textContent =
+      `Fotografía ${posicion + 1} de ${galeriaActual.length}`;
+  }
+
+  fotos.forEach(function (foto) {
+    foto.addEventListener("click", function (evento) {
+      evento.preventDefault();
+
+      const galeria = foto.closest(".galeria-universitaria");
+
+      galeriaActual = Array.from(
+        galeria.querySelectorAll("a")
+      );
+
+      posicion = galeriaActual.indexOf(foto);
+
+      mostrarFoto();
+      visor.classList.add("abierto");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function cerrarVisor() {
+    visor.classList.remove("abierto");
+    document.body.style.overflow = "";
+  }
+
+  visor.querySelector(".visor-umg-cerrar")
+    .addEventListener("click", cerrarVisor);
+
+  visor.querySelector(".visor-umg-anterior")
+    .addEventListener("click", function () {
+      posicion =
+        (posicion - 1 + galeriaActual.length) % galeriaActual.length;
+      mostrarFoto();
+    });
+
+  visor.querySelector(".visor-umg-siguiente")
+    .addEventListener("click", function () {
+      posicion = (posicion + 1) % galeriaActual.length;
+      mostrarFoto();
+    });
+
+  visor.addEventListener("click", function (evento) {
+    if (evento.target === visor) cerrarVisor();
+  });
+
+  document.addEventListener("keydown", function (evento) {
+    if (!visor.classList.contains("abierto")) return;
+
+    if (evento.key === "Escape") cerrarVisor();
+
+    if (evento.key === "ArrowRight") {
+      posicion = (posicion + 1) % galeriaActual.length;
+      mostrarFoto();
+    }
+
+    if (evento.key === "ArrowLeft") {
+      posicion =
+        (posicion - 1 + galeriaActual.length) % galeriaActual.length;
+      mostrarFoto();
+    }
+  });
+
+});
