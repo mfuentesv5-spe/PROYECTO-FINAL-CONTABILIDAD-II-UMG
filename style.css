@@ -1257,3 +1257,116 @@ input {
     font-size: 12px;
   }
 }
+/* ==========================================
+   CASO PRÁCTICO EMPRESARIAL - UMG
+   ========================================== */
+
+#caso-empresarial {
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+
+#caso-empresarial > p {
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+#caso-empresarial .tarjeta {
+  background: #ffffff;
+  border: 1px solid #dce4ed;
+  border-top: 5px solid #d2aa43;
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(18, 52, 83, 0.10);
+}
+
+#caso-empresarial h3 {
+  color: #123453;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d2aa43;
+}
+
+#caso-empresarial .tarjeta > h3:first-child {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+#caso-empresarial p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+#caso-empresarial table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+#caso-empresarial th {
+  background: #123453;
+  color: #ffffff;
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+}
+
+#caso-empresarial td {
+  padding: 15px 16px;
+  border-bottom: 1px solid #e1e7ee;
+  color: #243746;
+}
+
+#caso-empresarial tbody tr:nth-child(even) {
+  background: #f2f6fa;
+}
+
+#caso-empresarial tbody tr:hover {
+  background: #e8f0f8;
+}
+
+#caso-empresarial td:last-child {
+  font-weight: 700;
+  color: #123453;
+}
+
+#caso-empresarial strong {
+  color: #123453;
+}
+
+#caso-empresarial ul {
+  margin: 20px 0;
+  padding-left: 25px;
+}
+
+#caso-empresarial li {
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  #caso-empresarial {
+    padding-top: 30px;
+    padding-bottom: 35px;
+  }
+
+  #caso-empresarial .tarjeta {
+    padding: 18px;
+  }
+
+  #caso-empresarial h3 {
+    font-size: 19px;
+  }
+
+  #caso-empresarial table {
+    font-size: 13px;
+  }
+
+  #caso-empresarial th,
+  #caso-empresarial td {
+    padding: 11px 8px;
+  }
+}
