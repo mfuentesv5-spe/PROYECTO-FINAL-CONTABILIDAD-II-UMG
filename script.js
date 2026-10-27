@@ -575,3 +575,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const botones = document.querySelectorAll(".boton-actividad");
+
+  const aniversario = document.getElementById("contenido-aniversario");
+  const convencion = document.getElementById("contenido-convencion");
+
+  if (!aniversario || !convencion || botones.length === 0) {
+    return;
+  }
+
+  botones.forEach(function (boton) {
+    boton.addEventListener("click", function () {
+      const actividad = boton.dataset.actividad;
+
+      aniversario.hidden = actividad !== "aniversario";
+      convencion.hidden = actividad !== "convencion";
+
+      botones.forEach(function (elemento) {
+        const seleccionado = elemento === boton;
+
+        elemento.classList.toggle("activo", seleccionado);
+        elemento.setAttribute("aria-pressed", String(seleccionado));
+      });
+    });
+  });
+});
