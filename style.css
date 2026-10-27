@@ -1062,3 +1062,39 @@ input {
     transition: none;
   }
 }
+
+/* Ampliacion de fotografias al pasar el mouse */
+
+.galeria-universitaria {
+  overflow: visible;
+}
+
+.galeria-universitaria a {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: box-shadow 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .galeria-universitaria a:hover {
+    z-index: 20;
+    overflow: visible;
+    box-shadow: 0 18px 40px rgba(18, 52, 83, 0.3);
+  }
+
+  .galeria-universitaria a:hover img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    max-width: min(80vw, 850px);
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(18, 52, 83, 0.3);
+    transform: translate(-50%, -50%);
+    z-index: 21;
+  }
+}
