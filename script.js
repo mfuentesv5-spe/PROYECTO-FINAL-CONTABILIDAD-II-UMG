@@ -500,3 +500,78 @@ function calcularTIR() {
       ". Compárala con la tasa mínima de rendimiento requerida.";
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const fotografias = document.querySelectorAll(".galeria-universitaria a");
+
+  if (fotografias.length === 0) return;
+
+  const visor = document.createElement("div");
+  visor.className = "visor-fotos";
+  visor.setAttribute("role", "dialog");
+  visor.setAttribute("aria-modal", "true");
+  visor.setAttribute("aria-label", "Visor de fotografías");
+
+  const imagen = document.createElement("img");
+  imagen.alt = "";
+
+  const cerrar = document.createElement("button");
+  cerrar.className = "cerrar-visor";
+  cerrar.type = "button";
+  cerrar.textContent = "×";
+  cerrar.setAttribute("aria-label", "Cerrar fotografía");
+
+  visor.appendChild(imagen);
+  visor.appendChild(cerrar);
+  document.body.appendChild(visor);
+
+  let enlaceAnterior = null;
+
+  function cerrarFotografia() {
+    visor.classList.remove("activo");
+    imagen.removeAttribute("src");
+    document.body.style.overflow = "";
+
+    if (enlaceAnterior) {
+      enlaceAnterior.focus();
+    }
+  }
+
+  fotografias.forEach(function (enlace) {
+    enlace.addEventListener("click", function (evento) {
+      evento.preventDefault();
+
+      const foto = enlace.querySelector("img");
+      if (!foto) return;
+
+      enlaceAnterior = enlace;
+      imagen.src = enlace.getAttribute("href");
+      imagen.alt = foto.alt;
+
+      visor.classList.add("activo");
+      document.body.style.overflow = "hidden";
+      cerrar.focus();
+    });
+  });
+
+  cerrar.addEventListener("click", cerrarFotografia);
+
+  visor.addEventListener("click", function (evento) {
+    if (evento.target === visor) {
+      cerrarFotografia();
+    }
+  });
+
+  document.addEventListener("keydown", function (evento) {
+    if (!visor.classList.contains("activo")) return;
+
+    if (evento.key === "Escape") {
+      cerrarFotografia();
+    }
+
+    if (evento.key === "Tab") {
+      evento.preventDefault();
+      cerrar.focus();
+    }
+  });
+});
