@@ -594,8 +594,29 @@
 <section id="universidad" class="seccion">
   <h2>Vida universitaria</h2>
   <div class="linea"></div>
+  
+<div class="selector-actividades">
+  <button
+    type="button"
+    class="boton-actividad activo"
+    data-actividad="aniversario"
+    aria-pressed="true">
+    Aniversario de la Universidad
+  </button>
 
-  <div class="actividad-universitaria">
+  <button
+    type="button"
+    class="boton-actividad"
+    data-actividad="convencion"
+    aria-pressed="false">
+    Convención de la Universidad
+  </button>
+</div>
+
+    
+  
+<div class="actividad-universitaria" id="contenido-aniversario">
+
     <h3>Aniversario de la Universidad</h3>
     
 <h4>Una experiencia de convivencia, alegría y orgullo universitario</h4>
@@ -667,7 +688,8 @@
     </div>
   </div>
 
-  <div class="actividad-universitaria">
+  
+<div class="actividad-universitaria" id="contenido-convencion" hidden>
     <h3>Convención de la Universidad</h3>
     
 <h4>Una experiencia de aprendizaje, integración y convivencia universitaria</h4>
