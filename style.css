@@ -1062,3 +1062,61 @@ input {
     transition: none;
   }
 }
+
+/* BOTONES INTERACTIVOS DE ACTIVIDADES UNIVERSITARIAS */
+
+.selector-actividades {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.boton-actividad {
+    background-color: #ffffff;
+    color: #123453;
+    border: 2px solid #d2aa43;
+    border-radius: 12px;
+    padding: 15px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background-color 0.3s ease;
+}
+
+.boton-actividad:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(18, 52, 83, 0.20);
+}
+
+.boton-actividad.activo {
+    background-color: #123453;
+    color: #ffffff;
+    border-color: #d2aa43;
+    box-shadow: 0 4px 12px rgba(18, 52, 83, 0.15);
+}
+
+.boton-actividad:focus-visible {
+    outline: 3px solid #d2aa43;
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .selector-actividades {
+        flex-direction: column;
+    }
+
+    .boton-actividad {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+/* Mantener oculto el apartado no seleccionado */
+.actividad-universitaria[hidden] {
+    display: none !important;
+}
